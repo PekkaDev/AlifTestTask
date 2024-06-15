@@ -28,7 +28,7 @@ public class WalletAuthenticationMiddleware
 
         var db = context.RequestServices.GetRequiredService<WalletDbContext>();
 
-        if (!db.Wallets.Any(it => it.UserId == userId))
+        if (!db.Wallets.Any(it => it.UserId == userId.ToString()))
         {
             context.Response.StatusCode = 401;
             await context.Response.WriteAsync("Invalid user id");
